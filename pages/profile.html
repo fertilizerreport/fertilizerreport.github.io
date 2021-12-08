@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/stylenav.css">
+    <!-- Sweet Alert JavaScript -->
+    <script src="../js/sweetalert2.js"></script>
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <!-- Nunito Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,700" rel="stylesheet">
+    <title>Sufia Entp | Hatibandha</title>
+</head>
+<body class="bg-light">
+
+    <div>
+        <div class="row mx-1">
+            <div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1 bg-white shadow my-5 border border-warning">
+                <div>
+                    <div>
+                        <div id="profileSection">
+						<br>
+						<div class="col-12 col-12 mb-4 text-center">
+                                <span class="h4" style="color:#00b903">সারের তথ্য</span>
+                            </div>
+							<hr/>
+							
+                            <div class="col-12 col-12 mb-3 text-center">
+                                <img style="border-radius: 50%" id="userAvatar" src="../images/avatar.jpg" alt="avatar icon" >
+                            </div>
+                             <div class="col-12 col-12 mb-4 text-center">
+                                <span class="h4" style="color:#FF007F" id="pfdealername">please wait...</span><br>
+                                <span class="h4" style="color:#FF007F" id="pfunion"></span><br>
+								<span>Update Time:  </span><span style="color:blue" id="pflastupdate">loading...</span>
+                            </div>
+							<hr/>
+							<span style="color:violet">সারের মজুদ তথ্য</span>
+							<hr/>
+							<center><h5>ইউরিয়া<hr/></h5></center>
+							<span>বরাদ্দ:  </span><span style="color:blue" id="pfureaallocated">loading...</span><br>
+							<span>উত্তোলন:  </span><span style="color:blue" id="pfureadrawn">loading...</span><br>
+							<span>মজুদ:  </span><span style="color:blue" id="pfureastore">loading...</span><br>
+							
+							<center><h5>ডিএপি<hr/></h5></center>
+							<span>বরাদ্দ:  </span><span style="color:blue" id="pfdapallocated">loading...</span><br>
+							<span>উত্তোলন:  </span><span style="color:blue" id="pfdapdrawn">loading...</span><br>
+							<span>মজুদ:  </span><span style="color:blue" id="pfdapstore">loading...</span><br>
+							
+							<center><h5>টিএসপি<hr/></h5></center>
+							<span>বরাদ্দ:  </span><span style="color:blue" id="pftspallocated">loading...</span><br>
+							<span>উত্তোলন:  </span><span style="color:blue" id="pftspdrawn">loading...</span><br>
+							<span>মজুদ:  </span><span style="color:blue" id="pftspstore">loading...</span><br>
+							<center><h5>এমওপি<hr/></h5></center>
+							<span>বরাদ্দ:  </span><span style="color:blue" id="pfmopallocated">loading...</span><br>
+							<span>উত্তোলন:  </span><span style="color:blue" id="pfmopdrawn">loading...</span><br>
+							<span>মজুদ:  </span><span style="color:blue" id="pfmopstore">loading...</span><br>
+							
+							
+                            <div class="col-lg-12 col-md-12 text-center">
+                                <button type="button" class="btn btn-primary btn-block text-uppercase mb-3" onclick="showEditProfileForm()">
+                                Edit<small><i class="fas fa-pencil-alt ml-2"></i></small></button>
+                                <button type="button" class="btn btn-dark btn-block text-uppercase" onclick="signOut()">
+                                Sign Out<small><i class="fas fa-sign-out-alt ml-2"></i></small></button>
+                            </div>
+                        </div>
+						<div>
+						<br>
+						<button onclick="window.print()">Print info</button>
+						</div> 
+                        <div id="editProfileForm">
+                            <h2 class="h2 text-center text-dark mb-3">তথ্য আপডেট করুন</h2>
+                            <div class="form-group">
+                                <label for="name">ডিলারের নাম</label>
+                                <input type="text" class="form-control" id="dealername" onblur="checkdealername()" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="union">ইউনিয়ন</label>
+                                <input type="text" class="form-control" id="union" onblur="checkunion()" readonly>
+                            </div>
+                            <div class="form-group"><label for="lastupdate">lastupdate<span class="text-danger ml-1">*</span></label><input type="datetime-local" class="form-control" id="lastupdate" onblur="checklastupdate()"></div>
+                           <center><h5>ইউরিয়া<hr/></h5></center>
+							<div class="form-group"><label for="ureaallocated">বরাদ্দ<span class="text-danger ml-1">*</span></label><input type="text" class="form-control" id="ureaallocated" onblur="checkureaallocated()"></div>
+                            <div class="form-group"><label for="ureadrawn">উত্তোলন<span class="text-danger ml-1">*</span></label><input type="text" class="form-control" id="ureadrawn" onblur="checkureadrawn()"></div>
+                            <div class="form-group"><label for="ureastore">মজুদ<span class="text-danger ml-1">*</span></label><input type="text" class="form-control" id="ureastore" onblur="checkureastore()"></div>
+                            
+							<center><h5>ডিএপি<hr/></h5></center>
+							<div class="form-group"><label for="dapallocated">বরাদ্দ<span class="text-danger ml-1">*</span></label><input type="text" class="form-control" id="dapallocated" onblur="checkdapallocated()"></div>
+                            <div class="form-group"><label for="dapdrawn">উত্তোলন<span class="text-danger ml-1">*</span></label><input type="text" class="form-control" id="dapdrawn" onblur="checkdapdrawn()"></div>
+                            <div class="form-group"><label for="dapstore">মজুদ<span class="text-danger ml-1">*</span></label><input type="text" class="form-control" id="dapstore" onblur="checkdapstore()"></div>
+                            
+							<center><h5>টিএসপি<hr/></h5></center>
+							<div class="form-group"><label for="tspallocated">বরাদ্দ<span class="text-danger ml-1">*</span></label><input type="text" class="form-control" id="tspallocated" onblur="checktspallocated()"></div>
+                            <div class="form-group"><label for="tspdrawn">উত্তোলন<span class="text-danger ml-1">*</span></label><input type="text" class="form-control" id="tspdrawn" onblur="checktspdrawn()"></div>
+                            <div class="form-group"><label for="tspstore">মজুদ<span class="text-danger ml-1">*</span></label><input type="text" class="form-control" id="tspstore" onblur="checktspstore()"></div>
+                            <center><h5>এমওপি<hr/></h5></center>
+							<div class="form-group"><label for="mopallocated">বরাদ্দ<span class="text-danger ml-1">*</span></label><input type="text" class="form-control" id="mopallocated" onblur="checkmopallocated()"></div>
+                            <div class="form-group"><label for="mopdrawn">উত্তোলন<span class="text-danger ml-1">*</span></label><input type="text" class="form-control" id="mopdrawn" onblur="checkmopdrawn()"></div>
+                            <div class="form-group"><label for="mopstore">মজুদ<span class="text-danger ml-1">*</span></label><input type="text" class="form-control" id="mopstore" onblur="checkmopstore()"></div>
+							
+                            <button type="button" class="btn btn-primary btn-block text-uppercase mb-3" onclick="saveProfile()">Save</button>
+                            <button type="button" class="btn btn-dark btn-block text-uppercase" onclick="hideEditProfileForm()">Cancle</button>
+                        </div>
+						<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyAvxFcODpGUh5hqLHKiv9w_038zrAYFxt8",
+			authDomain: "phonebook-8bcb2.firebaseapp.com",
+			databaseURL: "https://phonebook-8bcb2.firebaseio.com",
+			projectId: "phonebook-8bcb2",
+			storageBucket: "phonebook-8bcb2.appspot.com",
+			messagingSenderId: "962677419165",
+			appId: "1:962677419165:web:1566bd9745edfa7fe4f874"
+        };
+        firebase.initializeApp(config);
+        var database = firebase.database();
+    </script>
+    
+    <!-- Custom JavaScript -->
+    <script src="../js/app.js"></script>
+
+</body>
+</html>
